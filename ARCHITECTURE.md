@@ -17,7 +17,6 @@ As described in the specification, the system is simple enough to be built by on
 ## C4 Architectural Diagrams
 
 ### 1. Context Diagram
-The highest‑level view: the user and how they interact with the system.
 
 ```mermaid
 C4Context
