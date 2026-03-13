@@ -14,3 +14,21 @@ C4Context
   System(expenseTracker, "Personal Expense Tracker", "Allows users to record expenses, categorize them, and view monthly reports.")
 
   Rel(user, expenseTracker, "Adds expenses, views reports, manages categories")
+
+```mermaid
+C4Container
+  title Container diagram for the Personal Expense Tracker
+
+  Person(user, "User", "A person who wants to track expenses.")
+
+  Container_Boundary(expenseTracker, "Personal Expense Tracker") {
+    Container(web_app, "Web Application", "React / Angular", "Provides the user interface for managing expenses and viewing reports.")
+    Container(api, "Backend API", "Java Spring Boot", "Handles business logic: expense management, categories, reports, and user data.")
+    ContainerDb(db, "Database", "MySQL / H2", "Stores users, expenses, categories, and transaction history.")
+  }
+
+  Rel(user, web_app, "Uses", "HTTPS")
+  Rel(web_app, api, "Makes API calls to", "JSON/HTTPS")
+  Rel(api, db, "Reads/Writes to", "JDBC/SQL")
+
+  UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
