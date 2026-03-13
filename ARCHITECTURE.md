@@ -14,7 +14,7 @@ C4Context
   System(expenseTracker, "Personal Expense Tracker", "Allows users to record expenses, categorize them, and view monthly reports.")
 
   Rel(user, expenseTracker, "Adds expenses, views reports, manages categories")
-
+...
 ## Container Diagram
 This diagram zooms into the Personal Expense Tracker System to show the high‑level technical building blocks.
 
@@ -33,7 +33,7 @@ C4Container
   Rel(user, web_app, "Uses", "HTTPS")
   Rel(web_app, api, "Makes API calls to", "JSON/HTTPS")
   Rel(api, db, "Reads/Writes to", "JDBC/SQL")
-
+...
 Component Diagram (Backend API)
 This diagram zooms into the Backend API container to show the major structural building blocks.
 
@@ -81,6 +81,7 @@ C4Component
   Rel(report_controller, auth_middleware, "Protected by")
 
   UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
+  ...
 
 Level 4: Code Diagram (Class Diagram)
 This diagram shows the structure of the main data classes and their relationships.
@@ -115,3 +116,4 @@ Expense "many" --> "1" Category : belongs to
 Expense "many" --> "1" User : owned by
 
   UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
+...
