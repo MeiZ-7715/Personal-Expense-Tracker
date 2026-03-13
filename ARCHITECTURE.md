@@ -14,52 +14,58 @@ As described in the specification, the system is simple enough to be built by on
 
 ---
 
-## C4 Architectural Diagrams
+## Architectural Diagrams (C4 Model)
 
-### 1. Context Diagram
+### 1. Context Diagram (Level 1)
+**What it shows:** The big picture – the user and the system they interact with.
 
 ```mermaid
-C4Container
-title Container diagram for Personal Expense Tracker
+flowchart TD
+    User["User<br/>A person who wants to track expenses"]
+    System["Personal Expense Tracker<br/>Allows users to record and view expenses"]
 
-Person(user, "User", "A person who wants to track expenses")
+    User -->|Uses| System
 
-System_Boundary(tracker, "Personal Expense Tracker") {
-    Container(webApp, "Web Application", "React / Angular", "Provides the user interface")
-    Container(api, "REST API", "Java Spring Boot", "Handles business logic and data access")
-    ContainerDb(db, "Database", "MySQL / H2", "Stores users, expenses, and categories")
-}
+```mermaid
+flowchart TD
+    User["User"]
 
-Rel(user, webApp, "Uses", "HTTPS")
-Rel(webApp, api, "Calls", "JSON/HTTPS")
-Rel(api, db, "Reads/Writes", "JDBC")
+    subgraph Personal Expense Tracker
+        WebApp["Web Application<br/>React / Angular<br/>Provides user interface"]
+        API["REST API<br/>Java Spring Boot<br/>Handles business logic"]
+        Database[("Database<br/>MySQL / H2<br/>Stores data")]
+    end
 
-C4Component
-title Component diagram for REST API Container
+    User -->|Uses| WebApp
+    WebApp -->|Calls (JSON/HTTPS)| API
+    API -->|Reads/Writes (JDBC)| Database
+    ```mermaid
+    flowchart TD
+    subgraph REST_API["REST API Container"]
+        direction TB
+        ExpenseController["ExpenseController"]
+        CategoryController["CategoryController"]
+        ReportController["ReportController"]
 
-Container(api, "REST API", "Java Spring Boot", "Handles business logic and data access")
+        ExpenseService["ExpenseService"]
+        CategoryService["CategoryService"]
+        ReportService["ReportService"]
 
-Component(expenseController, "ExpenseController", "REST endpoints for expenses")
-Component(categoryController, "CategoryController", "REST endpoints for categories")
-Component(reportController, "ReportController", "REST endpoint for monthly reports")
+        ExpenseRepo["ExpenseRepository"]
+        CategoryRepo["CategoryRepository"]
+        UserRepo["UserRepository"]
+    end
 
-Component(expenseService, "ExpenseService", "Business logic for expenses")
-Component(categoryService, "CategoryService", "Business logic for categories")
-Component(reportService, "ReportService", "Generates reports")
+    ExpenseController --> ExpenseService
+    CategoryController --> CategoryService
+    ReportController --> ReportService
 
-Component(expenseRepo, "ExpenseRepository", "Database access for expenses")
-Component(categoryRepo, "CategoryRepository", "Database access for categories")
-Component(userRepo, "UserRepository", "Database access for users")
-
-Rel(expenseController, expenseService, "Uses")
-Rel(categoryController, categoryService, "Uses")
-Rel(reportController, reportService, "Uses")
-Rel(expenseService, expenseRepo, "Uses")
-Rel(categoryService, categoryRepo, "Uses")
-Rel(reportService, expenseRepo, "Uses")
-Rel(reportService, categoryRepo, "Uses")
-
-classDiagram
+    ExpenseService --> ExpenseRepo
+    CategoryService --> CategoryRepo
+    ReportService --> ExpenseRepo
+    ReportService --> CategoryRepo
+     ```mermaid
+     classDiagram
 class Expense {
   -Long id
   -Double amount
@@ -85,3 +91,4 @@ class User {
 
 Expense "many" --> "1" Category : belongs to
 Expense "many" --> "1" User : owned by
+ 
