@@ -1,2 +1,7 @@
-# Personal-Expense-Tracker
-A system to track personal expenses, categorise them, and view summaries.
+# Personal Expense Tracker
+
+A web application that helps users record their daily expenses, categorise them, and generate monthly reports to understand spending habits.
+
+## Links
+- [System Specification](SPECIFICATION.md)
+- [Architecture Documentation](ARCHITECTURE.md)
