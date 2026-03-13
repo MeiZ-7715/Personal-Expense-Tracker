@@ -1,27 +1,33 @@
-# Personal Expense Tracker – Architecture Documentation
+# C4 Architecture for Personal Expense Tracker
 
-## Project Title
-Personal Expense Tracker
+This document outlines the architecture of the Personal Expense Tracker system using the C4 model.
 
-## Domain
-Personal Finance
-
-## Problem Statement
-(See [SPECIFICATION.md](SPECIFICATION.md) for details.)
-
-## Individual Scope
-As described in the specification, the system is simple enough to be built by one person.
-
----
-
-## Architectural Diagrams (C4 Model)
-
-### 1. Context Diagram (Level 1)
-**What it shows:** The big picture – the user and the system they interact with.
+## Level 1: System Context Diagram
+This diagram shows the big picture: our system and the people it interacts with.
 
 ```mermaid
-flowchart TD
-    User["User<br/>A person who wants to track expenses"]
-    System["Personal Expense Tracker<br/>Allows users to record and view expenses"]
+C4Context
+  title System Context diagram for Personal Expense Tracker
 
-    User -->|Uses| System
+  Person(user, "User", "A person who wants to track their daily expenses and understand spending habits.")
+
+  System(expenseTracker, "Personal Expense Tracker", "Allows users to record expenses, categorize them, and view monthly reports.")
+
+  Rel(user, expenseTracker, "Adds expenses, views reports, manages categories")
+
+C4Container
+  title Container diagram for the Personal Expense Tracker
+
+  Person(user, "User", "A person who wants to track expenses.")
+
+  Container_Boundary(expenseTracker, "Personal Expense Tracker") {
+    Container(web_app, "Web Application", "React / Angular", "Provides the user interface for managing expenses and viewing reports.")
+    Container(api, "Backend API", "Java Spring Boot", "Handles business logic: expense management, categories, reports, and user data.")
+    ContainerDb(db, "Database", "MySQL / H2", "Stores users, expenses, categories, and transaction history.")
+  }
+
+  Rel(user, web_app, "Uses", "HTTPS")
+  Rel(web_app, api, "Makes API calls to", "JSON/HTTPS")
+  Rel(api, db, "Reads/Writes to", "JDBC/SQL")
+
+  UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
