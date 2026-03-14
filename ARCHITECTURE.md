@@ -1,6 +1,7 @@
 # C4 Architecture for Personal Expense Tracker
 
-This document outlines the architecture of the Personal Expense Tracker system using the C4 model.
+This document outlines the architecture of the Personal Expense Tracker system using the C4 model.  
+**Note:** All monetary amounts are in South African Rand (ZAR).
 
 ## Level 1: System Context Diagram
 This diagram shows the big picture: our system and the people it interacts with.
@@ -9,16 +10,12 @@ This diagram shows the big picture: our system and the people it interacts with.
 C4Context
   title System Context diagram for Personal Expense Tracker
 
-  Person(user, "User", "A person who wants to track their daily expenses and understand spending habits.")
+  Person(user, "User", "A person who wants to track their daily expenses (in ZAR) and understand spending habits.")
 
   System(expenseTracker, "Personal Expense Tracker", "Allows users to record expenses, categorize them, and view monthly reports.")
 
   Rel(user, expenseTracker, "Adds expenses, views reports, manages categories")
-...
-## Container Diagram
-This diagram zooms into the Personal Expense Tracker System to show the high‑level technical building blocks.
-
-```mermaid
+```
 C4Container
   title Container diagram for the Personal Expense Tracker
 
@@ -27,17 +24,16 @@ C4Container
   Container_Boundary(expenseTracker, "Personal Expense Tracker") {
     Container(web_app, "Web Application", "React / Angular", "Provides the user interface for managing expenses and viewing reports.")
     Container(api, "Backend API", "Java Spring Boot", "Handles business logic: expense management, categories, reports, and user data.")
-    ContainerDb(db, "Database", "MySQL / H2", "Stores users, expenses, categories, and transaction history.")
+    ContainerDb(db, "Database", "MySQL / H2", "Stores users, expenses (in ZAR), categories, and transaction history.")
   }
 
   Rel(user, web_app, "Uses", "HTTPS")
   Rel(web_app, api, "Makes API calls to", "JSON/HTTPS")
   Rel(api, db, "Reads/Writes to", "JDBC/SQL")
-...
-Component Diagram (Backend API)
-This diagram zooms into the Backend API container to show the major structural building blocks.
 
-```mermaid
+  UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
+  
+```
 C4Component
   title Component diagram for the Backend API Container
 
@@ -56,7 +52,7 @@ C4Component
     Component(user_repo, "User Repository", "Data Access", "Abstracts database operations for users.")
   }
 
-  ContainerDb(db, "Database", "MySQL / H2", "Stores all system data.")
+  ContainerDb(db, "Database", "MySQL / H2", "Stores all system data, with amounts in ZAR.")
   Container(web_app, "Web Application", "External Container", "Makes API calls.")
 
   Rel(web_app, expense_controller, "add/get/delete expenses", "JSON/HTTPS")
@@ -81,16 +77,11 @@ C4Component
   Rel(report_controller, auth_middleware, "Protected by")
 
   UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
-  ...
-
-Level 4: Code Diagram (Class Diagram)
-This diagram shows the structure of the main data classes and their relationships.
-
-```mermaid
+```
 classDiagram
 class Expense {
   -Long id
-  -Double amount
+  -Double amount (ZAR)
   -String description
   -LocalDate date
   -Category category
@@ -114,6 +105,3 @@ class User {
 
 Expense "many" --> "1" Category : belongs to
 Expense "many" --> "1" User : owned by
-
-  UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
-...
