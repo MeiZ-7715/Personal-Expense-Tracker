@@ -1,0 +1,12 @@
+# Stakeholder Analysis – Personal Expense Tracker
+
+This document identifies the key stakeholders for the Personal Expense Tracker system, their roles, concerns, pain points, and success metrics.
+
+| Stakeholder | Role | Key Concerns | Pain Points | Success Metrics |
+|-------------|------|--------------|-------------|-----------------|
+| **Primary User** | An individual who uses the app to track personal expenses. | - Easy and fast expense entry.<br>- Clear insights into spending habits.<br>- Data privacy and security. | - Forgetting to record cash expenses.<br>- Difficulty understanding where money goes.<br>- No offline access. | - 90% of expenses recorded within 24 hours.<br>- User reduces monthly spending by 10% after 3 months. |
+| **Family Member (Shared Account)** | A spouse or family member who has access to shared household expenses. | - Ability to view and add expenses for shared categories.<br>- Real‑time synchronization across devices. | - Duplicate entries for the same purchase.<br>- Confusion about who spent what. | - 100% of shared expenses are tagged correctly.<br>- No duplicate entries per month. |
+| **System Administrator** | IT staff responsible for deploying and maintaining the server. | - System uptime and reliability.<br>- Easy backup and restore.<br>- Monitoring and alerting. | - Manual deployment steps.<br>- Lack of visibility into server health. | - 99.9% uptime.<br>- Automated backups daily.<br>- Alerts configured for critical errors. |
+| **Developer** | Software engineer who maintains and enhances the codebase. | - Clean, well‑documented code.<br>- Easy to add new features.<br>- Comprehensive test coverage. | - Poorly commented code.<br>- Long build times.<br>- Lack of API documentation. | - 80% test coverage.<br>- New feature development time reduced by 20%. |
+| **Product Owner** | Responsible for defining features and prioritizing the backlog. | - Features that address user needs.<br>- Alignment with business goals.<br>- Quick feedback from users. | - Difficulty gathering user feedback.<br>- Competing priorities. | - 90% of planned features delivered each quarter.<br>- User satisfaction score ≥ 4.5/5. |
+| **Data Analyst** | Uses anonymized expense data to identify spending trends (if enabled by users). | - Access to clean, structured data.<br>- Ability to export data for analysis. | - Inconsistent data formats.<br>- Limited data export options. | - Data exports available in CSV and JSON.<br>- Anonymized data used for monthly trend reports. |
