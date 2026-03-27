@@ -2,7 +2,7 @@
 
 This document specifies the functional and non‑functional requirements for the Personal Expense Tracker system.
 
-## 1. Functional Requirements (10+)
+## 1. Functional Requirements 
 
 | ID | Requirement | Acceptance Criteria |
 |----|-------------|---------------------|
@@ -19,7 +19,7 @@ This document specifies the functional and non‑functional requirements for the
 | FR-11 | The system shall provide a search feature to find expenses by keyword in description. | - Search returns matching results.<br>- Search is case‑insensitive. |
 | FR-12 | The system shall support multi‑user accounts for shared household expenses (optional). | - Users can link accounts.<br>- Shared expenses visible to both. |
 
-## 2. Non‑Functional Requirements (8+)
+## 2. Non‑Functional Requirements 
 
 | Category | Requirement | Measurable Criterion |
 |----------|-------------|----------------------|
