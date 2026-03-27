@@ -1,6 +1,6 @@
 # Use Case Specifications – Personal Expense Tracker
 
-All monetary amounts are in **South African Rand (ZAR)**.
+
 
 ## 1. Register Account
 
