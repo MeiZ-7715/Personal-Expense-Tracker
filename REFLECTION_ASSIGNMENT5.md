@@ -14,15 +14,12 @@ Using UML stereotypes like `<<includes>>` and `<<extends>>` was tricky. I initia
 
 One of the biggest challenges was imagining realistic error scenarios. For example, while writing the “Add Expense” specification, I had to think about what happens if the user enters a negative amount or leaves the category blank. In a real South African context, a user might accidentally type “-100” or forget to select a category. Capturing these alternatives ensures the system is robust. I also added a description field as optional because users often just want to quickly log an expense.
 
-## 4. Aligning with South African Context
 
-To make the requirements more concrete, I used local examples: amounts in ZAR, references to stores like Checkers and Woolworths, and scenarios like sharing expenses in a Cape Town household. This not only makes the documents more engaging but also helps stakeholders (like a lecturer) see that the system is grounded in a realistic environment.
-
-## 5. Creating Test Cases That Are Both Comprehensive and Practical
+## 4. Creating Test Cases That Are Both Comprehensive and Practical
 
 Translating use cases to test cases required me to think about coverage. For each functional requirement, I wrote at least one positive test (happy path) and one negative test (error handling). I also included a test for the shared expense feature because it was a key stakeholder concern from Assignment 4. For non‑functional requirements, I had to define measurable criteria. For instance, “performance” became “page loads within 2 seconds” and “database query returns ≤ 3 seconds”. These metrics are objective and can be verified with tools like JMeter.
 
-## 6. Maintaining Consistency Across Assignments
+## 5. Maintaining Consistency Across Assignments
 
 A major requirement was that the use cases and tests must trace back to the stakeholder analysis from Assignment 4. I revisited the stakeholder table and ensured that each use case addresses at least one stakeholder concern. For example, “Export Expenses” directly supports the Data Analyst and System Administrator. “Manage Shared Expenses” directly addresses the Family Member stakeholder. This traceability demonstrates that the design is driven by real needs, not just academic exercises.
 
