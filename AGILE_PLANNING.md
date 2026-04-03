@@ -1,11 +1,5 @@
 # Agile Planning Document – Personal Expense Tracker
 
-**Project:** Personal Expense Tracker (South African Rand – ZAR)  
-**Based on:** Assignments 3 (architecture), 4 (requirements), 5 (use cases & tests)  
-**Prepared for:** Assignment 6 – Agile User Stories, Backlog, and Sprint Planning
-
----
-
 ## 1. User Stories
 
 ### 1.1 Functional User Stories (from Assignment 4 requirements)
