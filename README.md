@@ -13,3 +13,6 @@ A web application that helps users record their daily expenses, categorise them,
 - [Test Cases](TEST_CASES.md)
 - [Reflection – Assignment 5](REFLECTION_ASSIGNMENT5.md)
 - [Agile Planning Document (User Stories, Backlog, Sprint Plan)](AGILE_PLANNING.md)
+- [Template Analysis](TEMPLATE_ANALYSIS.md)
+- [Kanban Explanation](KANBAN_EXPLANATION.md)
+- [Reflection – Assignment 7](REFLECTION_ASSIGNMENT7.md)
