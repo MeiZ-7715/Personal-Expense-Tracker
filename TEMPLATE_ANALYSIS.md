@@ -1,35 +1,27 @@
 # Template Analysis and Selection – Personal Expense Tracker
 
-This document evaluates GitHub's current project templates and justifies the selection for managing the Personal Expense Tracker development.
+## Comparison of GitHub Project Templates
 
-## Template Comparison Table
-
-| Feature | Kanban | Iterative Development | Bug Tracker |
-|---------|--------|----------------------|-------------|
-| **Default Columns** | To do, In progress, Done | Backlog, Iteration, In progress, Review, Done | Triage, High priority, Low priority, Closed |
-| **Automation** | None – manual card movement | Cards auto-move when issues are closed or PRs merged | Basic automation for closing issues |
-| **Best For** | Simple task tracking, small personal projects | Sprint-based work with iteration planning | Bug tracking and prioritisation |
-| **Agile Suitability** | Good for basic Kanban | Excellent for Scrum + Kanban hybrid | Good for defect management |
-| **Workflow Visibility** | Manual status updates required | Real-time updates from repo activity | Focus on priority-based triage |
-| **Setup Complexity** | Very simple | Simple | Simple |
+| Template Name | Default Columns | Automation | Best For |
+|---------------|----------------|------------|----------|
+| **Kanban** | To do, In progress, Done | None (manual movement) | Simple task tracking, small projects |
+| **Iterative development** | Backlog, Iteration, In progress, Review, Done | Cards auto‑move when issues are closed or PRs merged | Sprint‑based development with backlog management |
+| **Bug tracker** | Triage, High priority, Low priority, Closed | Basic (closing issues) | Tracking and prioritising bugs |
 
 ## Selected Template: Iterative Development
 
-I have chosen the **Iterative Development** template for the Personal Expense Tracker project.
+I have chosen the **Iterative development** template for the Personal Expense Tracker.
 
 ### Justification
 
-**1. Alignment with Agile Methodology:**
-The Iterative Development template is designed for sprint-based work, which matches the sprint planning I did in Assignment 6. It includes a "Backlog" column for unscheduled work and an "Iteration" column for current sprint items.
+1. **Sprint support** – The template includes a "Backlog" column for unscheduled work and an "Iteration" column for the current sprint. This matches my sprint plan from Assignment 6.
 
-**2. Automation Features:**
-This template automatically moves cards when issues are closed or pull requests are merged. This reduces manual updates and keeps the board accurate – essential for a solo developer.
+2. **Automation** – Cards automatically move to "Done" when an issue is closed or a pull request is merged. This saves time and keeps the board accurate.
 
-**3. Built-in Review Column:**
-The "Review" column encourages code review before completion, which aligns with quality assurance needs.
+3. **Built‑in review** – The "Review" column encourages quality checks before completion.
 
-**4. Comparison with Other Templates:**
-- **Kanban** template has no automation and only three columns. It would require too much manual work.
-- **Bug Tracker** is designed for defect management, not feature development. My project has few bugs at this stage.
+4. **Why not the others?**  
+   - The plain **Kanban** template has no automation and only three columns, which would require too much manual work.  
+   - The **Bug tracker** is designed for defects, not feature development.
 
-Therefore, the **Iterative Development** template is the optimal choice for managing the Personal Expense Tracker development workflow.
+Therefore, the **Iterative development** template is the best fit for this project.
