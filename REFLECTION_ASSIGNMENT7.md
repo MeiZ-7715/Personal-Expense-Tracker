@@ -36,4 +36,4 @@ I researched alternative tools like Trello and Jira. Trello is simpler and has a
 
 ## Conclusion
 
-This assignment taught me that project management tools are not just about tracking tasks – they are about visualising workflow, identifying bottlenecks, and continuously improving. The Kanban board I created will serve as the command centre for the remainder of the project.
+This assignment taught me that project management tools are not just about tracking tasks – they are about visualising workflow, identifying bottlenecks, and continuously improving. The Kanban board I created will serve as the command centre for the remainder of the project.d I created will serve as the command centre for the remainder of the project.
