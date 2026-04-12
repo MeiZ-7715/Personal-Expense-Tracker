@@ -53,4 +53,4 @@ These limits ensure that I finish tasks before starting new ones, which is a cor
 
 ## Conclusion
 
-The Kanban board is not just a task list – it is a powerful tool for managing flow, identifying bottlenecks, and continuously improving the development process. For the Personal Expense Tracker, this board provides the structure needed to deliver a high-quality product efficiently.
+The Kanban board is not just a task list – it is a powerful tool for managing flow, identifying bottlenecks, and continuously improving the development process. For the Personal Expense Tracker, this board provides the structure needed to deliver a high-quality product efficiently.se Tracker, this board provides the structure needed to deliver a high-quality product efficiently.
