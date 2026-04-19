@@ -21,12 +21,15 @@ flowchart TD
         H[Show error message]
     end
 
-    A --> B --> C --> D
-    D -->|Yes| E --> F --> G
-    D -->|No| H --> A
+    A --> B
+    B --> C
+    C --> D
+    D -->|Yes| E
+    E --> F
+    F --> G
+    D -->|No| H
+    H --> A
 ```
-**Explanation:**  
-The user enters registration details and submits them. The system validates the input. If valid, the account is created and a verification email is sent. If invalid, the system displays an error and the user retries. This supports user registration functionality and ensures valid credentials.
 
 ---
 
@@ -48,12 +51,15 @@ flowchart TD
         I[Show error]
     end
 
-    A --> B --> C --> D
-    D -->|Yes| E --> F --> G --> H
+    A --> B
+    B --> C
+    C --> D
+    D -->|Yes| E
+    E --> F
+    F --> G
+    G --> H
     D -->|No| I
 ```
-**Explanation:**  
-The user enters expense details and saves them. The system validates the amount. If valid, the expense is stored and totals are updated. A budget alert check also runs. If invalid, an error is shown.
 
 ---
 
@@ -73,12 +79,13 @@ flowchart TD
         G[Show error]
     end
 
-    A --> B --> C --> D
-    D -->|Yes| E --> F
+    A --> B
+    B --> C
+    C --> D
+    D -->|Yes| E
+    E --> F
     D -->|No| G
 ```
-**Explanation:**  
-The user sets a budget and submits it. The system validates the amount. If valid, the budget is saved; otherwise, an error is displayed.
 
 ---
 
@@ -99,11 +106,13 @@ flowchart TD
     end
 
     A --> B
-    B -->|Yes| C --> D --> F --> G
-    B -->|No| E --> A
+    B -->|Yes| C
+    C --> D
+    D --> F
+    F --> G
+    B -->|No| E
+    E --> A
 ```
-**Explanation:**  
-The system continuously monitors spending. When the threshold is reached, an alert is generated and sent to the user. The user can dismiss the alert. If not reached, monitoring continues.
 
 ---
 
@@ -127,8 +136,6 @@ flowchart TD
     C --> E
     D --> E
 ```
-**Explanation:**  
-The user requests an export. The system queues the job and performs two parallel actions: generating the file and logging the request. The file is then provided for download.
 
 ---
 
@@ -150,12 +157,15 @@ flowchart TD
         I[Show error]
     end
 
-    A --> B --> C --> D --> E
-    E -->|Yes| F --> G --> H
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E -->|Yes| F
+    F --> G
+    G --> H
     E -->|No| I
 ```
-**Explanation:**  
-The user edits an expense and submits changes. The system validates the data. If valid, the expense is updated and totals recalculated. Otherwise, an error is shown.
 
 ---
 
@@ -176,12 +186,14 @@ flowchart TD
         H[Cancel action]
     end
 
-    A --> B --> C --> D
-    D -->|Yes| E --> F --> G
+    A --> B
+    B --> C
+    C --> D
+    D -->|Yes| E
+    E --> F
+    F --> G
     D -->|No| H
 ```
-**Explanation:**  
-The user selects and deletes an expense. The system asks for confirmation. If confirmed, the expense is deleted and totals updated. Otherwise, no action is taken.
 
 ---
 
@@ -199,7 +211,8 @@ flowchart TD
         E[Display results]
     end
 
-    A --> B --> C --> D --> E
+    A --> B
+    B --> C
+    C --> D
+    D --> E
 ```
-**Explanation:**  
-The user selects a month and requests a summary. The system processes the data and displays a chart and summary.
