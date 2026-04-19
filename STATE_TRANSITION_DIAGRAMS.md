@@ -41,7 +41,6 @@ States: NotSet, Active (within limit), Exceeded (overspent), Archived (past mont
 Guard condition: Transition to Exceeded only when total spending > budget amount.
 
 Maps to: FR-07 (set budget), FR-08 (budget alert).
-
 ```mermaid
 stateDiagram-v2
     [*] --> NotSet
@@ -60,7 +59,6 @@ States: Default (system-provided, e.g., Food, Transport), Custom (user-defined),
 Guard condition: Deletion only allowed if no expenses use that category.
 
 Maps to: FR-11 (manage categories).
-
 ```mermaid
 stateDiagram-v2
     [*] --> Default
@@ -87,7 +85,7 @@ stateDiagram-v2
     Dismissed --> [*]
     Triggered --> Expired : after 7 days
     Expired --> [*]
-  ```
+    ```
 
 ---
     Explanation:
