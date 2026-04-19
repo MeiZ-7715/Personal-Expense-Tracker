@@ -3,7 +3,6 @@
 This document describes the lifecycle of 8 critical objects in the system using UML state transition diagrams. All monetary values are in South African Rand (ZAR).
 
 ## 1. User Account
-
 ```mermaid
 stateDiagram-v2
     [*] --> Inactive
@@ -13,16 +12,12 @@ stateDiagram-v2
     Active --> Deleted : user deletes account
     Deleted --> [*]
 ```
+**Explanation:**  
+This diagram shows the lifecycle of a user account. A new account starts as *Inactive* until the user verifies their email. Once verified, the account becomes *Active*. If the user enters incorrect login details too many times, the account is *Suspended*. An administrator can reactivate it back to *Active*. If the user chooses to delete their account, it moves to *Deleted* and the process ends.
 
 ---
-Explanation:
 
-States: Draft (unsaved), Saved (persisted), Edited (modified but not saved), Deleted (removed).
-
-Events: save, edit, delete. Guard: amount must be > 0 ZAR.
-
-Maps to: FR-03 (add expense), FR-04 (edit/delete).
-
+## 2. Expense
 ```mermaid
 stateDiagram-v2
     [*] --> Draft
@@ -32,15 +27,12 @@ stateDiagram-v2
     Saved --> Deleted : user deletes
     Deleted --> [*]
 ```
+**Explanation:**  
+This diagram represents how an expense is created and managed. An expense begins as a *Draft* before being saved. Once saved, it becomes *Saved*. If the user makes changes, it moves to *Edited*. After saving again, it returns to *Saved*. If the user removes the expense, it transitions to *Deleted* and ends.
 
 ---
-Explanation:
 
-States: NotSet, Active (within limit), Exceeded (overspent), Archived (past month).
-
-Guard condition: Transition to Exceeded only when total spending > budget amount.
-
-Maps to: FR-07 (set budget), FR-08 (budget alert).
+## 3. Budget
 ```mermaid
 stateDiagram-v2
     [*] --> NotSet
@@ -50,15 +42,12 @@ stateDiagram-v2
     Active --> Archived : month ends
     Archived --> [*]
 ```
+**Explanation:**  
+This diagram shows how a budget behaves over time. Initially, no budget exists (*NotSet*). Once the user creates one, it becomes *Active*. If spending exceeds the budget, it moves to *Exceeded*. At the start of a new month, the budget resets back to *Active*. When the month ends, the budget is *Archived* and no longer active.
 
 ---
-Explanation:
 
-States: Default (system-provided, e.g., Food, Transport), Custom (user-defined), Archived (hidden but not deleted), Deleted (permanently removed).
-
-Guard condition: Deletion only allowed if no expenses use that category.
-
-Maps to: FR-11 (manage categories).
+## 4. Category
 ```mermaid
 stateDiagram-v2
     [*] --> Default
@@ -67,32 +56,28 @@ stateDiagram-v2
     Archived --> Custom : user reactivates
     Custom --> Deleted : user deletes (no expenses linked)
     Deleted --> [*]
-    ```
+```
+**Explanation:**  
+This diagram represents expense categories. The system starts with *Default* categories (e.g., Food, Transport). Users can create *Custom* categories. These can be temporarily disabled (*Archived*) and later restored. A custom category can only be *Deleted* if it is not linked to any expenses.
 
 ---
-Explanation:
 
-States: Pending (not yet triggered), Triggered (alert active), Dismissed (user acknowledged), Expired (auto‑cleared).
-
-Event: budget threshold reached.
-
-Maps to: FR-08 (receive budget alert).
+## 5. Alert
 ```mermaid
 stateDiagram-v2
     [*] --> Pending
     Pending --> Triggered : spending >= 80% of budget
     Triggered --> Dismissed : user views and dismisses
-    Dismissed --> [*]
     Triggered --> Expired : after 7 days
+    Dismissed --> [*]
     Expired --> [*]
-    ```
+```
+**Explanation:**  
+This diagram shows how budget alerts work. Alerts start as *Pending*. When spending reaches a threshold (e.g., 80%), the alert is *Triggered*. The user can acknowledge it, moving it to *Dismissed*. If ignored, it automatically becomes *Expired* after a certain time.
 
 ---
-    Explanation:
 
-States: Pending (awaiting confirmation), Accepted (agreed), Rejected (disagreed), Split (each member’s share recorded).
-
-Maps to: FR-12 (shared expenses), stakeholder concern for family members.
+## 6. Shared Expense
 ```mermaid
 stateDiagram-v2
     [*] --> Pending
@@ -101,14 +86,13 @@ stateDiagram-v2
     Accepted --> Split : both have paid share
     Rejected --> [*]
     Split --> [*]
-     ```
+```
+**Explanation:**  
+This diagram represents shared expenses between users. A shared expense starts as *Pending* while waiting for confirmation. If the second user agrees, it becomes *Accepted* and later *Split* when both parties pay their share. If declined, it moves to *Rejected* and ends.
 
 ---
-Explanation:
 
-States: Queued (request received), Processing (generating CSV), Completed (file ready), Failed (error).
-
-Maps to: FR-09 (export expenses), non‑functional performance requirement
+## 7. Export Job
 ```mermaid
 stateDiagram-v2
     [*] --> Queued
@@ -117,14 +101,13 @@ stateDiagram-v2
     Processing --> Failed : error (e.g., no data)
     Completed --> [*]
     Failed --> [*]
-     ```
+```
+**Explanation:**  
+This diagram shows how exporting data works. When a user requests an export, the job is *Queued*. The system processes it (*Processing*). If successful, it becomes *Completed*. If something goes wrong (e.g., no data available), it moves to *Failed*.
 
 ---
-Explanation:
 
-States: Requested (user selects month), Calculating (aggregation in progress), Ready (data stored in cache), Displayed (shown as pie chart).
-
-Maps to: FR-06 (view monthly summary).
+## 8. Monthly Summary
 ```mermaid
 stateDiagram-v2
     [*] --> Requested
@@ -132,3 +115,6 @@ stateDiagram-v2
     Calculating --> Ready : summary prepared
     Ready --> Displayed : user views
     Displayed --> [*]
+```
+**Explanation:**  
+This diagram shows how monthly summaries are generated. When a user requests a summary, it enters the *Requested* state. The system processes the data (*Calculating*). Once ready, it moves to *Ready*. When the user views it, it becomes *Displayed* and completes the cycle.
