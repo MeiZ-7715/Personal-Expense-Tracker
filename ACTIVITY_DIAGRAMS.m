@@ -1,29 +1,32 @@
 # Activity Diagrams – Personal Expense Tracker
 
-All amounts in ZAR.
-
 ---
 
 ## 1. User Registration Workflow
 ```mermaid
 flowchart TD
-    subgraph User
-        A[Enter email & password]
+    subgraph User_Lane
+        A[Enter email and password]
         B[Submit details]
     end
 
-    subgraph System
-        C[Validate email & password]
-        D{Valid?}
+    subgraph System_Lane
+        C[Validate input]
+        D{Valid}
         E[Create account]
-        F[Send verification email]
-        G[Show success & auto-login]
-        H[Show error message]
+        F[Send email]
+        G[Show success]
+        H[Show error]
     end
 
-    A --> B --> C --> D
-    D -->|Yes| E --> F --> G
-    D -->|No| H --> A
+    A --> B
+    B --> C
+    C --> D
+    D -- Yes --> E
+    E --> F
+    F --> G
+    D -- No --> H
+    H --> A
 ```
 
 ---
@@ -31,70 +34,82 @@ flowchart TD
 ## 2. Add Expense
 ```mermaid
 flowchart TD
-    subgraph User
+    subgraph User_Lane
         A[Enter expense details]
-        B[Click Save]
+        B[Click save]
     end
 
-    subgraph System
-        C[Validate amount > 0]
-        D{Valid?}
+    subgraph System_Lane
+        C[Validate amount]
+        D{Valid}
         E[Save expense]
         F[Update totals]
-        G[Check budget alert]
+        G[Check alert]
         H[Show success]
         I[Show error]
     end
 
-    A --> B --> C --> D
-    D -->|Yes| E --> F --> G --> H
-    D -->|No| I
+    A --> B
+    B --> C
+    C --> D
+    D -- Yes --> E
+    E --> F
+    F --> G
+    G --> H
+    D -- No --> I
 ```
 
 ---
 
-## 3. Set Monthly Budget
+## 3. Set Budget
 ```mermaid
 flowchart TD
-    subgraph User
-        A[Enter budget amount]
+    subgraph User_Lane
+        A[Enter budget]
         B[Submit]
     end
 
-    subgraph System
-        C[Validate amount]
-        D{Valid?}
+    subgraph System_Lane
+        C[Validate]
+        D{Valid}
         E[Save budget]
-        F[Show confirmation]
-        G[Show error]
+        F[Confirm]
+        G[Error]
     end
 
-    A --> B --> C --> D
-    D -->|Yes| E --> F
-    D -->|No| G
+    A --> B
+    B --> C
+    C --> D
+    D -- Yes --> E
+    E --> F
+    D -- No --> G
 ```
 
 ---
 
-## 4. Budget Alert Trigger
+## 4. Budget Alert
 ```mermaid
 flowchart TD
-    subgraph System
+    subgraph System_Lane
         A[Monitor spending]
-        B{Spending >= 80%?}
+        B{Limit reached}
         C[Create alert]
-        D[Send notification]
-        E[Continue monitoring]
+        D[Notify user]
+        E[Continue]
     end
 
-    subgraph User
+    subgraph User_Lane
         F[View alert]
-        G[Dismiss alert]
+        G[Dismiss]
     end
 
     A --> B
-    B -->|Yes| C --> D --> F --> G
-    B -->|No| E --> A
+    B -- Yes --> C
+    C --> D
+    D --> F
+    F --> G
+    B -- No --> E
+    E --> A
 ```
 
 ---
@@ -102,15 +117,15 @@ flowchart TD
 ## 5. Export CSV
 ```mermaid
 flowchart TD
-    subgraph User
+    subgraph User_Lane
         A[Request export]
     end
 
-    subgraph System
+    subgraph System_Lane
         B[Queue job]
-        C[Generate CSV]
+        C[Generate file]
         D[Log request]
-        E[Provide download]
+        E[Download]
     end
 
     A --> B
@@ -125,24 +140,29 @@ flowchart TD
 ## 6. Edit Expense
 ```mermaid
 flowchart TD
-    subgraph User
+    subgraph User_Lane
         A[Select expense]
-        B[Modify details]
-        C[Save changes]
+        B[Edit details]
+        C[Save]
     end
 
-    subgraph System
-        D[Validate amount]
-        E{Valid?}
-        F[Update expense]
-        G[Recalculate totals]
-        H[Show success]
-        I[Show error]
+    subgraph System_Lane
+        D[Validate]
+        E{Valid}
+        F[Update]
+        G[Recalculate]
+        H[Success]
+        I[Error]
     end
 
-    A --> B --> C --> D --> E
-    E -->|Yes| F --> G --> H
-    E -->|No| I
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E -- Yes --> F
+    F --> G
+    G --> H
+    E -- No --> I
 ```
 
 ---
@@ -150,40 +170,47 @@ flowchart TD
 ## 7. Delete Expense
 ```mermaid
 flowchart TD
-    subgraph User
+    subgraph User_Lane
         A[Select expense]
-        B[Click delete]
+        B[Delete]
     end
 
-    subgraph System
-        C[Ask confirmation]
-        D{Confirmed?}
+    subgraph System_Lane
+        C[Confirm]
+        D{Yes or No}
         E[Delete expense]
         F[Update totals]
-        G[Show confirmation]
-        H[Cancel action]
+        G[Done]
+        H[Cancel]
     end
 
-    A --> B --> C --> D
-    D -->|Yes| E --> F --> G
-    D -->|No| H
+    A --> B
+    B --> C
+    C --> D
+    D -- Yes --> E
+    E --> F
+    F --> G
+    D -- No --> H
 ```
 
 ---
 
-## 8. View Monthly Summary
+## 8. Monthly Summary
 ```mermaid
 flowchart TD
-    subgraph User
+    subgraph User_Lane
         A[Select month]
-        B[Request summary]
+        B[Request]
     end
 
-    subgraph System
-        C[Aggregate expenses]
+    subgraph System_Lane
+        C[Process data]
         D[Generate chart]
-        E[Display results]
+        E[Display]
     end
 
-    A --> B --> C --> D --> E
+    A --> B
+    B --> C
+    C --> D
+    D --> E
 ```
