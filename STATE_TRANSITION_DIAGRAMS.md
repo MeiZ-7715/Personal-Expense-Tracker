@@ -50,15 +50,15 @@ This diagram shows how a budget behaves over time. Initially, no budget exists (
 ## 4. Category
 ```mermaid
 stateDiagram-v2
-    [*] --> Default
-    Default --> Custom : user creates custom category
+    [*] --> DefaultCategory
+    DefaultCategory --> Custom : user creates custom category
     Custom --> Archived : user deactivates
     Archived --> Custom : user reactivates
     Custom --> Deleted : user deletes (no expenses linked)
     Deleted --> [*]
 ```
 **Explanation:**  
-This diagram represents expense categories. The system starts with *Default* categories (e.g., Food, Transport). Users can create *Custom* categories. These can be temporarily disabled (*Archived*) and later restored. A custom category can only be *Deleted* if it is not linked to any expenses.
+This diagram represents expense categories. The system starts with predefined categories (*DefaultCategory*, e.g., Food, Transport). Users can create *Custom* categories. These can be temporarily disabled (*Archived*) and later restored. A custom category can only be *Deleted* if it is not linked to any expenses.
 
 ---
 
