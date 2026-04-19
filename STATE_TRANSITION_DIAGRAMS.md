@@ -15,6 +15,14 @@ stateDiagram-v2
 ```
 
 ---
+Explanation:
+
+States: Draft (unsaved), Saved (persisted), Edited (modified but not saved), Deleted (removed).
+
+Events: save, edit, delete. Guard: amount must be > 0 ZAR.
+
+Maps to: FR-03 (add expense), FR-04 (edit/delete).
+
 ```mermaid
 stateDiagram-v2
     [*] --> Draft
@@ -23,3 +31,7 @@ stateDiagram-v2
     Edited --> Saved : save changes
     Saved --> Deleted : user deletes
     Deleted --> [*]
+```
+
+---
+
