@@ -12,4 +12,14 @@ stateDiagram-v2
     Suspended --> Active : admin reactivates
     Active --> Deleted : user deletes account
     Deleted --> [*]
+```
 
+---
+```mermaid
+stateDiagram-v2
+    [*] --> Draft
+    Draft --> Saved : user saves expense
+    Saved --> Edited : user modifies
+    Edited --> Saved : save changes
+    Saved --> Deleted : user deletes
+    Deleted --> [*]
