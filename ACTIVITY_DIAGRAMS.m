@@ -21,14 +21,9 @@ flowchart TD
         H[Show error message]
     end
 
-    A --> B
-    B --> C
-    C --> D
-    D -->|Yes| E
-    E --> F
-    F --> G
-    D -->|No| H
-    H --> A
+    A --> B --> C --> D
+    D -->|Yes| E --> F --> G
+    D -->|No| H --> A
 ```
 
 ---
@@ -51,13 +46,8 @@ flowchart TD
         I[Show error]
     end
 
-    A --> B
-    B --> C
-    C --> D
-    D -->|Yes| E
-    E --> F
-    F --> G
-    G --> H
+    A --> B --> C --> D
+    D -->|Yes| E --> F --> G --> H
     D -->|No| I
 ```
 
@@ -79,11 +69,8 @@ flowchart TD
         G[Show error]
     end
 
-    A --> B
-    B --> C
-    C --> D
-    D -->|Yes| E
-    E --> F
+    A --> B --> C --> D
+    D -->|Yes| E --> F
     D -->|No| G
 ```
 
@@ -106,12 +93,8 @@ flowchart TD
     end
 
     A --> B
-    B -->|Yes| C
-    C --> D
-    D --> F
-    F --> G
-    B -->|No| E
-    E --> A
+    B -->|Yes| C --> D --> F --> G
+    B -->|No| E --> A
 ```
 
 ---
@@ -157,13 +140,8 @@ flowchart TD
         I[Show error]
     end
 
-    A --> B
-    B --> C
-    C --> D
-    D --> E
-    E -->|Yes| F
-    F --> G
-    G --> H
+    A --> B --> C --> D --> E
+    E -->|Yes| F --> G --> H
     E -->|No| I
 ```
 
@@ -186,12 +164,8 @@ flowchart TD
         H[Cancel action]
     end
 
-    A --> B
-    B --> C
-    C --> D
-    D -->|Yes| E
-    E --> F
-    F --> G
+    A --> B --> C --> D
+    D -->|Yes| E --> F --> G
     D -->|No| H
 ```
 
@@ -211,8 +185,5 @@ flowchart TD
         E[Display results]
     end
 
-    A --> B
-    B --> C
-    C --> D
-    D --> E
+    A --> B --> C --> D --> E
 ```
