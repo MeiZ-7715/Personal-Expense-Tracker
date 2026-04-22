@@ -1,0 +1,59 @@
+```markdown
+# Reflection – Domain Model and Class Diagram (Assignment 9)
+
+## Challenges Faced
+
+### 1. Choosing the Right Granularity for Entities
+I had to decide whether concepts like “Alert” and “SharedExpense” deserved their own classes or could be attributes of `Budget` or `Expense`. I chose separate classes because they have distinct lifecycles (state diagrams from Assignment 8) and multiple methods. For example, an `Alert` can be triggered, dismissed, or expired – behaviours that don’t fit naturally inside `Budget`.
+
+### 2. Defining Relationships and Multiplicities
+Determining the correct multiplicity was tricky. For instance, a `Budget` can trigger many `Alert`s over time (if the user adjusts spending), so `Budget` 1 → 0..* `Alert`. Conversely, an `Alert` belongs to exactly one `Budget`. I had to trace back to the state diagram of `Alert` to confirm that each alert is associated with a single budget. Another challenge: a `User` can be both the owner and the “sharedWith” of a `SharedExpense`. I solved this by creating two separate associations from `User` to `SharedExpense` with different roles.
+
+### 3. Balancing Attribute Types and Constraints
+I used `Double` for monetary amounts, but in a real system, a `BigDecimal` would be safer to avoid floating‑point errors. However, for the domain model, `Double` is acceptable. I also added business rules as separate notes (e.g., amount > 0) rather than embedding them in the diagram, keeping the class diagram clean.
+
+### 4. Aligning with Previous Assignments
+Every class and method had to trace back to functional requirements (Assignment 4), user stories (Assignment 6), and state/activity diagrams (Assignment 8). For example, the `checkThreshold()` method in `Budget` directly implements the budget alert logic from activity diagram 4. This required revisiting my earlier work to ensure consistency – a time‑consuming but valuable exercise.
+
+## How the Class Diagram Aligns with Prior Work
+
+- **Functional Requirements (Assignment 4):**  
+  - FR-03 (add expense) → `Expense.save()`  
+  - FR-07 (set budget) → `Budget.setBudget()`  
+  - FR-08 (budget alert) → `Alert.trigger()` and `Budget.checkThreshold()`  
+  - FR-12 (shared expenses) → `SharedExpense` class with `invite()`, `accept()`, `reject()`
+
+- **Use Cases (Assignment 5):**  
+  - “Add Expense” use case → `Expense` attributes and `save()` method.  
+  - “Receive Budget Alert” use case → `Alert` class and its state transitions.
+
+- **State Diagrams (Assignment 8):**  
+  - The `Alert` state diagram (Pending → Triggered → Dismissed/Expired) is directly reflected in the `status` attribute and `trigger()`, `dismiss()`, `expire()` methods.  
+  - The `Expense` state diagram (Draft → Saved → Edited → Deleted) is partially captured by `save()`, `edit()`, `delete()`.
+
+- **Activity Diagrams (Assignment 8):**  
+  - The “Add Expense” workflow shows validation and saving → implemented by `Expense.save()` and the validation rule (amount > 0).  
+  - The “Export CSV” workflow is not directly in the class diagram but would involve a separate `ExportService` class (not shown for brevity).
+
+## Trade‑offs Made
+
+1. **Inheritance vs. Composition**  
+   I did not use inheritance because the system has no obvious “is‑a” relationships (e.g., `StudentUser` and `AdminUser` could be added later, but for now a single `User` class suffices). Composition is also absent – I used simple associations to keep the diagram lightweight.
+
+2. **Including All Methods vs. Core Only**  
+   I only included methods that are essential for the domain (e.g., `save()`, `edit()`, `delete()`, `checkThreshold()`). I omitted getters/setters, constructors, and helper methods because they clutter the diagram without adding conceptual value.
+
+3. **String Status vs. Enum**  
+   I used `String` for `status` in `Alert` and `SharedExpense` to keep the diagram simple. In code, these would be enums (`AlertStatus.PENDING`, etc.). This trade‑off favours readability over strict UML correctness.
+
+## Lessons Learned About Object‑Oriented Design
+
+- **Domain models should focus on business concepts, not technical details.** I initially wanted to add `createdAt` and `updatedAt` timestamps to every entity, but they are implementation concerns, not domain concerns. I kept only the most relevant attributes.
+
+- **Multiplicity reveals hidden constraints.** Drawing the relationships forced me to think about whether a `Budget` can exist without a `Category` (no – it must belong to one). This clarified business rules.
+
+- **Traceability is a powerful validation tool.** By mapping each class and method back to a requirement or use case, I confirmed that my design covers all necessary functionality.
+
+- **Mermaid.js is sufficient for academic UML.** While it lacks some advanced features (e.g., visibility icons for attributes), it renders cleanly on GitHub and is easy to edit.
+
+This assignment deepened my understanding of how to translate textual requirements into a visual, object‑oriented structure. The class diagram will serve as a blueprint for the next phase: implementation.
