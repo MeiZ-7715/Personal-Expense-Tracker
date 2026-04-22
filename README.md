@@ -19,3 +19,6 @@ A web application that helps users record their daily expenses, categorise them,
 - [State Transition Diagrams](STATE_TRANSITION_DIAGRAMS.md)
 - [Activity Diagrams](ACTIVITY_DIAGRAMS.md)
 - [Reflection – Assignment 8](REFLECTION_ASSIGNMENT8.md)
+- [Domain Model](DOMAIN_MODEL.md)
+- [Class Diagram](CLASS_DIAGRAM.md)
+- [Reflection – Assignment 9](REFLECTION_ASSIGNMENT9.md)
