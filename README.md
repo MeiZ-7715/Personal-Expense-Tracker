@@ -22,3 +22,13 @@ A web application that helps users record their daily expenses, categorise them,
 - [Domain Model](DOMAIN_MODEL.md)
 - [Class Diagram](CLASS_DIAGRAM.md)
 - [Reflection – Assignment 9](REFLECTION_ASSIGNMENT9.md)
+## Assignment 10: From Class Diagrams to Code
+
+### Language Choice
+I chose **Java 17** because of its strong object‑oriented features and wide support for design patterns and unit testing (JUnit 5). All code is written in plain Java with no external frameworks.
+
+### How to Run the Code
+1. Clone this repository.
+2. Compile the source code:
+   ```bash
+   javac -d out src/main/java/com/expense/model/*.java src/main/java/com/expense/creational/*.java
