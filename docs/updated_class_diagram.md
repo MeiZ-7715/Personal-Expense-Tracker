@@ -1,8 +1,7 @@
 # Updated Class Diagram with Repository Layer
 
-```mermaid
 classDiagram
-    class Repository<T, ID> {
+    class Repository~T, ID~ {
         <<interface>>
         +save(T entity)
         +findById(ID id) Optional~T~
@@ -16,7 +15,7 @@ classDiagram
     }
 
     class InMemoryUserRepository {
-        -Map~String,User~ storage
+        -Map~String, User~ storage
         +save(User)
         +findById(String) Optional~User~
         +findByEmail(String) Optional~User~
@@ -25,11 +24,11 @@ classDiagram
     class ExpenseRepository {
         <<interface>>
         +findByUserId(String) List~Expense~
-        +findByDateRange(LocalDate, LocalDate) List~Expense~
+        +findByDateRange(LocalDate start, LocalDate end) List~Expense~
     }
 
     class InMemoryExpenseRepository {
-        -Map~String,Expense~ storage
+        -Map~String, Expense~ storage
         +save(Expense)
         +findByUserId(String) List~Expense~
     }
