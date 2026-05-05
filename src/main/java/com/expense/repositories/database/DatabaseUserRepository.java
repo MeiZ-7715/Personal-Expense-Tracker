@@ -5,10 +5,6 @@ import com.expense.repositories.UserRepository;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Stub implementation for a future database-backed repository.
- * This demonstrates how easy it is to add a new storage backend.
- */
 public class DatabaseUserRepository implements UserRepository {
     // In a real implementation, you would use JDBC, JPA, or a connection pool.
     // For now, this is a placeholder to show the structure.
