@@ -32,3 +32,22 @@ I chose **Java 17** because of its strong object‑oriented features and wide su
 2. Compile the source code:
    ```bash
    javac -d out src/main/java/com/expense/model/*.java src/main/java/com/expense/creational/*.java
+
+   ## Assignment 11: Repository Pattern and Storage Abstraction
+
+### Repository Interfaces
+We defined a generic `Repository<T, ID>` interface with standard CRUD methods. All entity‑specific repositories (UserRepository, ExpenseRepository, etc.) extend this generic interface and add custom query methods (e.g., `findByEmail`).
+
+### In‑Memory Implementation
+The `inmemory` package contains HashMap‑based implementations of all repositories. A base class `InMemoryRepository` avoids code duplication. These implementations are perfect for fast unit tests and prototyping.
+
+### Storage Abstraction with Factory Pattern
+A `RepositoryFactory` class provides static methods to obtain the correct repository implementation based on a configuration string (e.g., `"MEMORY"` or `"DATABASE"`). This makes switching storage backends trivial – just change one argument.
+
+### Future‑Proofing
+Stub classes (e.g., `DatabaseUserRepository`) are already created in the `database` package. Adding a real database (MySQL, MongoDB) would only require implementing the existing interfaces – no changes to business logic.
+
+### How to Run Tests
+All in‑memory repositories have JUnit 5 tests. To run them:
+```bash
+mvn test
