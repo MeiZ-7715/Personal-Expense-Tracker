@@ -1,5 +1,8 @@
-# Updated Class Diagram with Repository Layer
 
+
+## Updated Class Diagram with Repository Layer
+
+```mermaid
 classDiagram
     class Repository~T, ID~ {
         <<interface>>
@@ -37,3 +40,4 @@ classDiagram
     Repository <|-- ExpenseRepository
     UserRepository <|.. InMemoryUserRepository
     ExpenseRepository <|.. InMemoryExpenseRepository
+```
