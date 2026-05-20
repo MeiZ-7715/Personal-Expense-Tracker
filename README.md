@@ -51,3 +51,34 @@ Stub classes (e.g., `DatabaseUserRepository`) are already created in the `databa
 All in‑memory repositories have JUnit 5 tests. To run them:
 ```bash
 mvn test
+## Assignment 12: Service Layer and REST API
+
+### Service Layer
+- `UserService`, `ExpenseService`, `BudgetService` contain business rules:
+  - Email must be unique when creating a user.
+  - Expense amount must be > 0 ZAR.
+  - Adding an expense automatically updates the spent amount in the related budget (if it exists).
+- Services use the in‑memory repositories from Assignment 11.
+
+### REST API (Spring Boot)
+All endpoints are prefixed with `/api`.
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST   | `/api/users` | Create a new user |
+| GET    | `/api/users/{userId}` | Get user by ID |
+| GET    | `/api/users` | Get all users |
+| POST   | `/api/expenses` | Add a new expense |
+| GET    | `/api/expenses/user/{userId}` | Get all expenses of a user |
+| POST   | `/api/budgets` | Set or update a monthly budget |
+| GET    | `/api/budgets/user/{userId}` | Get all budgets of a user |
+
+### API Documentation (Swagger)
+Once the application is running, interactive Swagger UI is available at:  
+`http://localhost:8080/swagger-ui.html`
+
+### How to Run the API
+1. Make sure you have Java 17 and Maven installed.
+2. In the project root, run:
+   ```bash
+   mvn spring-boot:run
