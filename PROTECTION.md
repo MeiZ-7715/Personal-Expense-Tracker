@@ -25,4 +25,3 @@ The `main` branch holds the production‑ready version of the code. Protecting i
 - **Confidence** – CI tests give everyone confidence before merging.
 - **History** – Every merge is documented in the pull request.
 
-For more information, see [GitHub's branch protection documentation](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches).
