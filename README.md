@@ -82,3 +82,17 @@ Once the application is running, interactive Swagger UI is available at:
 2. In the project root, run:
    ```bash
    mvn spring-boot:run
+## Assignment 13: CI/CD Pipeline with GitHub Actions
+
+### Branch Protection
+The `main` branch is protected. See [PROTECTION.md](PROTECTION.md) for details.
+
+### CI/CD Pipeline
+We use a **demo project** (in the `demo/` folder) to demonstrate the pipeline.  
+- **CI**: Runs `mvn test` inside `demo/` on every push and pull request.
+- **CD**: On pushes to `main`, builds a JAR and uploads it as a workflow artifact.
+
+### How to Run Tests Locally (Demo)
+```bash
+cd demo
+mvn test
