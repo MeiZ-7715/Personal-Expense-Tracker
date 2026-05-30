@@ -96,3 +96,15 @@ We use a **demo project** (in the `demo/` folder) to demonstrate the pipeline.
 ```bash
 cd demo
 mvn test
+## Getting Started
+
+### Prerequisites
+- Java 17
+- Maven 3.8+
+- Git
+
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/MeiZ-7715/Personal-Expense-Tracker.git
+   cd Personal-Expense-Tracker
