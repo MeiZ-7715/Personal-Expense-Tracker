@@ -1,6 +1,12 @@
 # Personal Expense Tracker
 
-A web application that helps users record their daily expenses, categorise them, and generate monthly reports to understand spending habits.
+A web application that helps users record their daily expenses, categorize them, and generate monthly reports to understand spending habits.
+
+## Quick Start
+
+```bash
+git clone https://github.com/MeiZ-7715/Personal-Expense-Tracker.git
+cd Personal-Expense-Tracker
 
 ## Links
 - [System Specification](SPECIFICATION.md)
@@ -33,7 +39,7 @@ I chose **Java 17** because of its strong object‑oriented features and wide su
    ```bash
    javac -d out src/main/java/com/expense/model/*.java src/main/java/com/expense/creational/*.java
 
-   ## Assignment 11: Repository Pattern and Storage Abstraction
+## Assignment 11: Repository Pattern and Storage Abstraction
 
 ### Repository Interfaces
 We defined a generic `Repository<T, ID>` interface with standard CRUD methods. All entity‑specific repositories (UserRepository, ExpenseRepository, etc.) extend this generic interface and add custom query methods (e.g., `findByEmail`).
