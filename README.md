@@ -1,6 +1,13 @@
 # Personal Expense Tracker
 
-A web application that helps users record their daily expenses, categorise them, and generate monthly reports to understand spending habits.
+A web application that helps users record their daily expenses, categorize them, and generate monthly reports to understand spending habits.
+
+## Quick Start
+
+```bash
+git clone https://github.com/MeiZ-7715/Personal-Expense-Tracker.git
+cd Personal-Expense-Tracker
+```
 
 ## Links
 - [System Specification](SPECIFICATION.md)
@@ -22,38 +29,49 @@ A web application that helps users record their daily expenses, categorise them,
 - [Domain Model](DOMAIN_MODEL.md)
 - [Class Diagram](CLASS_DIAGRAM.md)
 - [Reflection – Assignment 9](REFLECTION_ASSIGNMENT9.md)
+
 ## Assignment 10: From Class Diagrams to Code
 
 ### Language Choice
+
 I chose **Java 17** because of its strong object‑oriented features and wide support for design patterns and unit testing (JUnit 5). All code is written in plain Java with no external frameworks.
 
 ### How to Run the Code
+
 1. Clone this repository.
 2. Compile the source code:
    ```bash
    javac -d out src/main/java/com/expense/model/*.java src/main/java/com/expense/creational/*.java
+```
 
-   ## Assignment 11: Repository Pattern and Storage Abstraction
+## Assignment 11: Repository Pattern and Storage Abstraction
 
 ### Repository Interfaces
+
 We defined a generic `Repository<T, ID>` interface with standard CRUD methods. All entity‑specific repositories (UserRepository, ExpenseRepository, etc.) extend this generic interface and add custom query methods (e.g., `findByEmail`).
 
 ### In‑Memory Implementation
+
 The `inmemory` package contains HashMap‑based implementations of all repositories. A base class `InMemoryRepository` avoids code duplication. These implementations are perfect for fast unit tests and prototyping.
 
 ### Storage Abstraction with Factory Pattern
+
 A `RepositoryFactory` class provides static methods to obtain the correct repository implementation based on a configuration string (e.g., `"MEMORY"` or `"DATABASE"`). This makes switching storage backends trivial – just change one argument.
 
 ### Future‑Proofing
-Stub classes (e.g., `DatabaseUserRepository`) are already created in the `database` package. Adding a real database (MySQL, MongoDB) would only require implementing the existing interfaces – no changes to business logic.
+
+Stub classes (e.g., `DatabaseUserRepository`) are already created in the `database` package. Adding a real database (e.g., MySQL or MongoDB) would only require implementing the existing interfaces, with no changes to the business logic.
 
 ### How to Run Tests
+
 All in‑memory repositories have JUnit 5 tests. To run them:
 ```bash
 mvn test
+```
 ## Assignment 12: Service Layer and REST API
 
 ### Service Layer
+
 - `UserService`, `ExpenseService`, `BudgetService` contain business rules:
   - Email must be unique when creating a user.
   - Expense amount must be > 0 ZAR.
@@ -61,6 +79,7 @@ mvn test
 - Services use the in‑memory repositories from Assignment 11.
 
 ### REST API (Spring Boot)
+
 All endpoints are prefixed with `/api`.
 
 | Method | Endpoint | Description |
@@ -74,37 +93,47 @@ All endpoints are prefixed with `/api`.
 | GET    | `/api/budgets/user/{userId}` | Get all budgets of a user |
 
 ### API Documentation (Swagger)
+
 Once the application is running, interactive Swagger UI is available at:  
 `http://localhost:8080/swagger-ui.html`
 
 ### How to Run the API
+
 1. Make sure you have Java 17 and Maven installed.
 2. In the project root, run:
-   ```bash
-   mvn spring-boot:run
+```bash
+mvn spring-boot:run
+```
 ## Assignment 13: CI/CD Pipeline with GitHub Actions
 
 ### Branch Protection
+
 The `main` branch is protected. See [PROTECTION.md](PROTECTION.md) for details.
 
 ### CI/CD Pipeline
+
 We use a **demo project** (in the `demo/` folder) to demonstrate the pipeline.  
 - **CI**: Runs `mvn test` inside `demo/` on every push and pull request.
 - **CD**: On pushes to `main`, builds a JAR and uploads it as a workflow artifact.
 
 ### How to Run Tests Locally (Demo)
+
 ```bash
 cd demo
 mvn test
+```
 ## Getting Started
 
 ### Prerequisites
+
 - Java 17
 - Maven 3.8+
 - Git
 
 ### Installation
+
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/MeiZ-7715/Personal-Expense-Tracker.git
-   cd Personal-Expense-Tracker
+```bash
+ git clone https://github.com/MeiZ-7715/Personal-Expense-Tracker.git
+ cd Personal-Expense-Tracker
+```
